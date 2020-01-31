@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import smtplib
 
 URL = 'https://www.amazon.com/Sony-Full-Frame-Mirrorless-Interchangeable-Lens-ILCE7M3/dp/B07B43WPVK/ref=sr_1_3?crid=MWAMHV1I1182&keywords=sony+alpha+a7iii&qid=1580498985&sprefix=sony+al%2Caps%2C155&sr=8-3'
 
@@ -21,3 +22,19 @@ def check_price():
 
     print(converted_price)
     print(title.strip())
+
+
+# establish a connection with GMail to send the mail
+def send_mail():
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+
+    # generate a password with you gmail account so you can login
+    server.login('', '')
+
+    subject = 'Price fell down!'
+    body = 'Check the amazon link https://www.amazon.com/Sony-Full-Frame-Mirrorless-Interchangeable-Lens-ILCE7M3/dp/B07B43WPVK/ref=sr_1_3?crid=MWAMHV1I1182&keywords=sony+alpha+a7iii&qid=1580498985&sprefix=sony+al%2Caps%2C155&sr=8-3'
+
+    msg = f"Subject: {subject}"
