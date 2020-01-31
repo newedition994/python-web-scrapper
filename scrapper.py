@@ -37,4 +37,13 @@ def send_mail():
     subject = 'Price fell down!'
     body = 'Check the amazon link https://www.amazon.com/Sony-Full-Frame-Mirrorless-Interchangeable-Lens-ILCE7M3/dp/B07B43WPVK/ref=sr_1_3?crid=MWAMHV1I1182&keywords=sony+alpha+a7iii&qid=1580498985&sprefix=sony+al%2Caps%2C155&sr=8-3'
 
-    msg = f"Subject: {subject}"
+    msg = f"Subject: {subject}\n\n{body|"
+
+    server.sendmail(
+        ''  # who the email is from
+        ''  # who the email was sent to
+        msg
+    )
+    print('HEY EMAIL HAS BEEN SENT!')
+
+    server.quit()
