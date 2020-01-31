@@ -14,5 +14,8 @@ title = soup.find(id="productTitle").get_text()
 price = soup.find(id="priceblock_ourprice").get_text()
 converted_price = float(price[0:5])
 
+if(converted_price < 1700):
+    send_mail()
+
 print(converted_price)
 print(title.strip())
