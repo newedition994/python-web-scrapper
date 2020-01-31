@@ -6,16 +6,18 @@ URL = 'https://www.amazon.com/Sony-Full-Frame-Mirrorless-Interchangeable-Lens-IL
 headers = {
     "User-Agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
 
-page = requests.get(URL, headers=headers)
 
-soup = BeautifulSoup(page.content, 'html.parser')
+def check_price():
+    page = requests.get(URL, headers=headers)
 
-title = soup.find(id="productTitle").get_text()
-price = soup.find(id="priceblock_ourprice").get_text()
-converted_price = float(price[0:5])
+    soup = BeautifulSoup(page.content, 'html.parser')
 
-if(converted_price < 1700):
-    send_mail()
+    title = soup.find(id="productTitle").get_text()
+    price = soup.find(id="priceblock_ourprice").get_text()
+    converted_price = float(price[0:5])
 
-print(converted_price)
-print(title.strip())
+    if(converted_price < 1700):
+        send_mail()
+
+    print(converted_price)
+    print(title.strip())
