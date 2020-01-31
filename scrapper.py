@@ -23,6 +23,9 @@ def check_price():
     print(converted_price)
     print(title.strip())
 
+    if(converted_price > 1700):
+        send_mail()
+
 
 # establish a connection with GMail to send the mail
 def send_mail():
